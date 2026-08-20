@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO Metadata -->
+<meta name="description" content="VoltaEdge AI — Edge intelligence and energy management platform engineered for unreliable power infrastructure by Michael Ikhine.">
+
+<title>VoltaEdge AI — Edge Energy Intelligence | 411 Ecosystem</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#0c0e12;
+    --panel:#14171d;
+    --panel-2:#191c23;
+    --line:rgba(237,240,245,0.09);
+    --ink:#edf0f5;
+    --ink-dim:#93989e;
+    --cyan:#4fd1c5;
+    --amber:#f5a623;
+    --green:#27c93f;
+    --header-height: 65px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Inter',sans-serif; line-height:1.6;
+  }
+  section{padding:60px 6vw;}
+  .wrap{max-width:960px; margin:0 auto;}
+
+  /* Header Navigation */
+  header.site-header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(12,14,18,0.92); backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 6vw;
+  }
+  .brand-lockup{display:flex; flex-direction:column; text-decoration:none; color:inherit;}
+  .brand-logo{font-family:'Inter',sans-serif; font-weight:700; font-size:22px; color:var(--cyan); letter-spacing:-0.5px;}
+  .brand-sub{font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--ink-dim); text-transform:uppercase; letter-spacing:1px;}
+
+  .back-link{
+    font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--ink-dim);
+    text-decoration:none; display:inline-flex; align-items:center; gap:6px;
+    transition:color .2s;
+  }
+  .back-link:hover{color:var(--cyan);}
+
+  /* Hero Banner */
+  .hero-volta{padding:80px 6vw 40px; border-bottom:1px solid var(--line); position:relative; overflow:hidden;}
+  .hero-volta::before{
+    content:''; position:absolute; top:-150px; right:-100px; width:450px; height:450px;
+    background:radial-gradient(circle, rgba(245,166,35,0.12), transparent 70%);
+    pointer-events:none;
+  }
+  .badge-status{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--amber);
+    background:rgba(245,166,35,0.08); border:1px solid rgba(245,166,35,0.2);
+    padding:4px 12px; border-radius:100px; text-transform:uppercase; margin-bottom:20px;
+  }
+  h1{font-size:clamp(32px,5vw,50px); font-weight:700; line-height:1.15; margin:0 0 16px; letter-spacing:-0.5px;}
+  h1 .amber{color:var(--amber);}
+  .hero-lead{font-size:17px; color:var(--ink-dim); max-width:720px; margin-bottom:30px;}
+
+  /* 1. Problem Section */
+  .problem-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:18px; margin-top:30px;}
+  .prob-card{background:var(--panel); border:1px solid var(--line); padding:22px; border-radius:12px;}
+  .prob-title{font-size:15px; font-weight:600; color:var(--amber); margin:0 0 8px; display:flex; align-items:center; gap:8px;}
+  .prob-desc{font-size:13.5px; color:var(--ink-dim); margin:0;}
+
+  /* Architecture & Flow Diagrams */
+  .arch-box{background:var(--panel-2); border:1px solid var(--line); border-radius:16px; padding:28px; margin:30px 0;}
+  .flow-pipeline{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+  .flow-step{
+    background:var(--panel); border:1px solid var(--line); padding:10px 14px;
+    border-radius:8px; font-family:'JetBrains Mono',monospace; font-size:12px; text-align:center; flex:1; min-width:120px;
+  }
+  .flow-arrow{color:var(--amber); font-weight:bold;}
+
+  /* UI Dashboard Showcase */
+  .app-preview{
+    background:#080a0d; border:1px solid var(--line); border-radius:16px; padding:24px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.5); max-width:480px; margin:30px auto;
+  }
+  .app-header{display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--line); padding-bottom:12px; margin-bottom:20px;}
+  .app-card-main{
+    background:linear-gradient(135deg, rgba(245,166,35,0.15) 0%, rgba(20,23,29,0.8) 100%);
+    border:1px solid rgba(245,166,35,0.3); border-radius:12px; padding:20px; text-align:center; margin-bottom:16px;
+  }
+  .app-cost{font-size:32px; font-weight:700; color:var(--ink); font-family:'JetBrains Mono',monospace;}
+  .app-subcost{font-size:12px; color:var(--green); font-family:'JetBrains Mono',monospace; margin-top:4px;}
+  .app-insight{
+    background:var(--panel); border-left:3px solid var(--cyan); padding:12px 14px;
+    border-radius:0 8px 8px 0; font-size:12.5px; text-align:left;
+  }
+
+  /* Progressive Disclosure / Collapsible Tables */
+  details{
+    background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px 20px; margin-bottom:14px;
+  }
+  details summary{
+    font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:600; color:var(--ink);
+    cursor:pointer; display:flex; justify-content:space-between; align-items:center;
+  }
+  details summary::-webkit-details-marker{display:none;}
+  details[open]{border-color:rgba(245,166,35,0.4);}
+  .details-content{margin-top:16px; border-top:1px solid var(--line); padding-top:16px;}
+  
+  table.tech-table{width:100%; border-collapse:collapse; font-size:13px; text-align:left;}
+  table.tech-table th{font-family:'JetBrains Mono',monospace; color:var(--ink-dim); padding:8px; border-bottom:1px solid var(--line);}
+  table.tech-table td{padding:10px 8px; border-bottom:1px solid rgba(237,240,245,0.04); color:var(--ink);}
+
+  /* Section Titles */
+  .section-label{font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--amber); text-transform:uppercase; letter-spacing:1.5px; display:block; margin-bottom:8px;}
+  h2.section-title{font-size:26px; font-weight:700; margin:0 0 16px;}
+
+  /* Roadmap Timeline */
+  .roadmap-list{display:flex; flex-direction:column; gap:16px; margin-top:24px;}
+  .rm-item{display:flex; gap:16px; align-items:flex-start;}
+  .rm-badge{
+    font-family:'JetBrains Mono',monospace; font-size:11px; padding:4px 10px; border-radius:6px;
+    background:var(--panel-2); border:1px solid var(--line); white-space:nowrap; min-width:130px; text-align:center;
+  }
+  .rm-badge.active{border-color:var(--amber); color:var(--amber);}
+  .rm-desc{font-size:13.5px; color:var(--ink-dim);}
+
+  footer{border-top:1px solid var(--line); padding:28px 6vw; text-align:center; color:var(--ink-dim); font-family:'JetBrains Mono',monospace; font-size:11.5px;}
+
+  @media(max-width:760px){
+    .flow-pipeline{flex-direction:column;}
+    .flow-arrow{transform:rotate(90deg);}
+    .rm-item{flex-direction:column; gap:6px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav>
+    <a href="index.html" class="brand-lockup">
+      <span class="brand-logo">411</span>
+      <span class="brand-sub">by Michael Ikhine</span>
+    </a>
+    <a href="index.html" class="back-link">← Back to Portfolio</a>
+  </nav>
+</header>
+
+<section class="hero-volta">
+  <div class="wrap">
+    <div class="badge-status">⚡ Concept & Prototype Architecture</div>
+    <h1>VoltaEdge AI — <span class="amber">Physical Intelligence</span> for Unreliable Energy Networks</h1>
+    <p class="hero-lead">An edge-computing energy management platform engineered to monitor electricity consumption, classify appliance-level usage via TinyML, and protect sensitive hardware across Nigerian grid, generator, and solar installations.</p>
+  </div>
+</section>
+
+<!-- SECTION 1: THE REALITY / PROBLEM -->
+<section>
+  <div class="wrap">
+    <span class="section-label">01 / Problem Space</span>
+    <h2 class="section-title">Electricity in Nigeria is an economic and protection challenge</h2>
+    <p style="color:var(--ink-dim); max-width:680px;">Managing power requires constant manual intervention—balancing prepaid token depletion, generator fuel usage, unstable grid voltages, and unmonitored heavy loads.</p>
+
+    <div class="problem-grid">
+      <div class="prob-card">
+        <div class="prob-title">⚠️ Blind Token Depletion</div>
+        <div class="prob-desc">Prepaid meters run out abruptly because users lack real-time visibility into which appliance is burning through units.</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-title">⚡ Voltage Instability</div>
+        <div class="prob-desc">Surges, sag, and brownouts during grid-to-generator switchovers frequently damage expensive compressors and electronics.</div>
+      </div>
+      <div class="prob-card">
+        <div class="prob-title">🔌 Multi-Source Complexity</div>
+        <div class="prob-desc">Managing load priorities between Solar Inverters, Public Grid (DisCo), and Petrol/Diesel Generators is entirely unautomated.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: THE PRODUCT & ARCHITECTURE -->
+<section style="background:var(--panel);">
+  <div class="wrap">
+    <span class="section-label">02 / System Concept</span>
+    <h2 class="section-title">One intelligence layer between the meter and the building</h2>
+    <p style="color:var(--ink-dim);">VoltaEdge integrates energy sensing, localized compute, non-intrusive load recognition, and automated relay control into a DIN-rail form factor.</p>
+
+    <div class="arch-box">
+      <div class="flow-pipeline">
+        <div class="flow-step">Mains Feed</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">CT / Voltage Sensing</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">ESP32-S3 Edge AI</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Decision Engine</div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-step">Relay / App UI</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: THE USER INTERFACE -->
+<section>
+  <div class="wrap">
+    <span class="section-label">03 / Product Design</span>
+    <h2 class="section-title">Consumer UI: Actionable Intelligence</h2>
+    <p style="color:var(--ink-dim);">Designed like a modern fintech app—converting complex telemetry into clear financial metrics, estimated runtimes, and actionable insights.</p>
+
+    <!-- Simulated UI Mockup -->
+    <div class="app-preview">
+      <div class="app-header">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-dim);">VOLTAEDGE MOBILE</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--green);">● LIVE TELEMETRY</span>
+      </div>
+
+      <div class="app-card-main">
+        <div style="font-size:11px; color:var(--ink-dim); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Today's Energy Cost</div>
+        <div class="app-cost">₦428.50</div>
+        <div class="app-subcost">↓ 12% vs yesterday · 18.4 Units Remaining</div>
+      </div>
+
+      <div class="app-insight">
+        <strong style="color:var(--amber); display:block; margin-bottom:2px;">💡 AI Insight: Air Conditioner</strong>
+        AC consumed 41% of power today (₦185). Setting thermostat +2°C will stretch current token by ~2.5 days.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: HOW INTELLIGENCE WORKS (NILM) -->
+<section style="background:var(--panel);">
+  <div class="wrap">
+    <span class="section-label">04 / Edge ML Architecture</span>
+    <h2 class="section-title">Non-Intrusive Load Monitoring (NILM)</h2>
+    <p style="color:var(--ink-dim); max-width:700px;">Instead of placing a smart plug on every appliance, VoltaEdge samples aggregate current waveforms at the main distribution board and uses TinyML feature extraction to identify active appliances.</p>
+
+    <div class="arch-box" style="background:var(--panel-2);">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--cyan); margin-bottom:12px;">NILM Execution Pipeline</div>
+      <p style="font-size:13.5px; color:var(--ink-dim); margin:0;">
+        High-frequency sampling (1–10 kHz) → Active/Reactive power signature extraction → Harmonics analysis → On-device TinyML classification → Appliance state identified.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: HARDWARE & TECHNICAL SPECIFICATIONS -->
+<section>
+  <div class="wrap">
+    <span class="section-label">05 / Hardware Specifications</span>
+    <h2 class="section-title">Technical Specifications & Architecture</h2>
+    <p style="color:var(--ink-dim); margin-bottom:24px;">Progressively disclosed technical details. All component selections represent the current prototype engineering path.</p>
+
+    <!-- Collapsible 1: Core Processing & Sensing -->
+    <details open>
+      <summary>Core Processing & Sensing Stack <span>▼</span></summary>
+      <div class="details-content">
+        <table class="tech-table">
+          <thead>
+            <tr><th>Layer</th><th>Selected Hardware</th><th>Function</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Processing</td><td>ESP32-S3 (Dual-core LX7)</td><td>Edge compute, Wi-Fi/BLE, Vector instructions for TinyML</td></tr>
+            <tr><td>Current Sensing</td><td>SCT-013 Split-Core CT</td><td>Non-invasive AC current sampling up to 100A</td></tr>
+            <tr><td>Voltage / Energy</td><td>ADE7753 / PZEM-004T Path</td><td>Isolated voltage waveform & active power calculation</td></tr>
+            <tr><td>Isolation</td><td>Optocouplers / Galvanic Isolation</td><td>Mains voltage separation from micro-controller digital logic</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- Collapsible 2: Safety & Protection Requirements -->
+    <details>
+      <summary>Electrical Safety & Protection Considerations <span>▼</span></summary>
+      <div class="details-content">
+        <p style="font-size:13px; color:var(--ink-dim);">
+          <strong>Engineering Verification Notice:</strong> Production readiness requires formal compliance testing under applicable standards. Key design areas under evaluation:
+        </p>
+        <ul style="font-size:13px; color:var(--ink-dim); padding-left:20px; line-height:1.8;">
+          <li>Creepage and clearance distances matched to working voltages and pollution degrees.</li>
+          <li>Transient surge protection using matched Metal Oxide Varistors (MOVs) and Thermal Fuses.</li>
+          <li>Contactor/Relay selection matched to inductive motor startup loads (AC-3 rating).</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- SECTION 6: ROADMAP & STATUS -->
+<section style="background:var(--panel);">
+  <div class="wrap">
+    <span class="section-label">06 / Development Roadmap</span>
+    <h2 class="section-title">Current Development Status</h2>
+    <p style="color:var(--ink-dim);">A transparent look at where VoltaEdge AI currently stands in its development lifecycle.</p>
+
+    <div class="roadmap-list">
+      <div class="rm-item">
+        <span class="rm-badge active">PHASE 1 · PROTOTYPE</span>
+        <div class="rm-desc">ESP32-S3 firmware, CT sensor calibration, basic Wi-Fi telemetry transmission, and mobile UI/UX layouts.</div>
+      </div>
+      <div class="rm-item">
+        <span class="rm-badge">PHASE 2 · TINYML</span>
+        <div class="rm-desc">Collecting localized Nigerian appliance current waveforms to train the NILM classification model.</div>
+      </div>
+      <div class="rm-item">
+        <span class="rm-badge">PHASE 3 · HARDWARE</span>
+        <div class="rm-desc">Custom PCB layout design, DIN-rail enclosure selection, and thermal/electrical safety testing.</div>
+      </div>
+      <div class="rm-item">
+        <span class="rm-badge">PHASE 4 · PILOT</span>
+        <div class="rm-desc">Field testing across controlled residential and commercial installations in Nigeria.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>VoltaEdge AI · Part of the 411 Ecosystem · Engineered by Michael Ikhine</footer>
+
+</body>
+</html>
